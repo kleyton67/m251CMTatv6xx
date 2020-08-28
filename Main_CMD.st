@@ -50,7 +50,7 @@ VAR
 	(*************************************************************)
     (************* Variáveis para Bloco de Ecrita ****************)
     (*************************************************************)
-	SG_WriteSingleCMDatv630	:	SINGLE_WRITE;
+	SG_WriteSingleCMDatv630		:	SINGLE_WRITE;
 	SG_WriteSingleMotorRot		:	SINGLE_WRITE;
 	SG_WriteSingleQuickStop		:	SINGLE_WRITE;
 	(*************************************************************)
@@ -104,37 +104,6 @@ ADDM_atv630Add(
 	Error		=>,
 	(* Byte para indicar problemas na comunicação *)
 	CommError	=>
-	);
-	
-w_DataRCMDatv630 := 0;
-	
-SG_WriteSingleCMDatv630(
-	(* Pronto para executar o Bloco *)
-	Execute		:=	ADDM_atv630Add.Done AND NOT ADDM_atv630Add.Error,
-	(* Bloco tem de ser executado *)
-	Abort		:=	FALSE,
-	(* Endereço do bloco ADDM_ModbusTCP_ATVIMC para conexão *)
-	Addr		:=	s_AddressModbusTcp,
-	(* Tempo Máximo de espera(500ms) *)
-	Timeout		:=	5,
-	(* Tipo de objeto a ser escrito *)
-	ObjType		:=	ObjectType.MW,
-	(* Endereco do Objeto a ser escrito *)
-	FirstObj	:=	8501,
-	(* Palavra a ser escrita *)
-	theWord    := w_DataWCMDatv630,
-	(* Término da exeução da atividade *)
-	Done       => ,
-	(* Bloco ainda está ocupado *)
-	Busy       => ,
-	(* Execução encerrada com exceções *)
-	Aborted    => ,
-	(* Erro detectados *)
-	Error      => ,
-	(* Palavra com erros detectados *)
-	CommError  => ,
-	(* Erros da operação *)
-	OperError  =>
 	);
 	
 CMDDescription(
@@ -191,8 +160,8 @@ SG_WriteSingleMotorRot(
 	(* Endereco do Objeto a ser escrito *)
 	FirstObj	:=	8602,
 	(* Palavra a ser escrita *)
-	theWord    := i_RotMotoratv630,
-	(* Término da exeução da atividade *)
+	theWord    := INT_TO_WORD(i_RotMotoratv630),
+	(* Término da execução da atividade *)
 	Done       => ,
 	(* Bloco ainda está ocupado *)
 	Busy       => ,

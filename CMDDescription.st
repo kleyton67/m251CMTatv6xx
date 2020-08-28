@@ -10,7 +10,7 @@ VAR_INPUT
 	b_QuickStop	:	BOOL; (* Parada Rápida *)
 	b_Run		:	BOOL; (* Acionamneto do Motor *)
 	b_Clear		:	BOOL; (* Comando de Rearm do Motor *)
-	b_Stop		:	BOOL; (* Comando de para do Motor( Será utilizada parada configurada no registrador STT ). *)
+	b_Stop		:	BOOL; (* Comando de parada do Motor( Será utilizada parada configurada no registrador STT ). *)
 END_VAR
 VAR_IN_OUT
 	w_CMDWord	:	WORD; (* Palavra do conteúdo do Registrador lido / Mudança das posições conforme configuração dos bits *)
